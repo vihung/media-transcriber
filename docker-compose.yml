@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  media-transcriber:
+    container_name: media-transcriber
+    image: vihung/personal:media-transcriber
+    build:
+      context: .
+      dockerfile: dockerfile
+    restart: always
+    volumes:
+      - type: bind
+        source: ~/media/inbox
+        target: /root/media/inbox
+      - type: bind
+        source: ~/media/outbox
+        target: /root/media/outbox
