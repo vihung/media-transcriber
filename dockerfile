@@ -6,7 +6,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3.9
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3-distutils
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3-pip
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y ffmpeg
-# RUN DEBIAN_FRONTEND=noninteractive apt-get install -y ffprobe
 
 RUN pip install --upgrade pip
 RUN pip install -U openai-whisper

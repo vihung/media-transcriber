@@ -5,11 +5,9 @@ INPUT_DIR=/root/media/inbox
 OUTPUT_DIR=/root/media/outbox
 WORK_DIR=/root/media/in-progress
 
-
 round() {
     printf "%.0f\n" ${1}
 }
-
 
 format-time() {
     num=$(round ${1})
@@ -21,7 +19,7 @@ format-time() {
 
 # If ${INPUT_DIR} has files
 numFiles=$(ls -1q "${INPUT_DIR}/" | wc -l)
-echo "Number of Files: ${numFiles}"
+echo "Number of Files to Process: ${numFiles}"
 
 if [ ${numFiles} -gt 0 ]; then
     # Iterate through all media files in ${INPUT_DIR}
