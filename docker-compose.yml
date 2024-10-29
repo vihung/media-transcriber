@@ -8,6 +8,10 @@ services:
       context: .
       dockerfile: dockerfile
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
     volumes:
       - type: bind
         source: ~/media/inbox
