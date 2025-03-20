@@ -7,13 +7,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3-distutils
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3-pip
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y ffmpeg
 
-RUN pip install --upgrade pip
-RUN pip install -U openai-whisper
+RUN pip install --upgrade pip openai-whisper
 
-RUN mkdir /app
-RUN mkdir -p /root/media/inbox
-RUN mkdir -p /root/media/in-progress
-RUN mkdir -p /root/media/outbox
+RUN mkdir /app && mkdir -p /root/media/inbox && mkdir -p /root/media/in-progress && mkdir -p /root/media/outbox
 
 COPY ./generate-transcript.sh /app/generate-transcript.sh
 
