@@ -2,6 +2,7 @@ FROM ubuntu:22.04
 
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y sudo
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y bc
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3.9
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3-distutils
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3-pip
