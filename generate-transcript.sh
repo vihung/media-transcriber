@@ -49,8 +49,8 @@ for sourceMediaFile in "${INPUT_DIR}"/*; do
 
     # Run Whisper on the file ${mediaFile}
     startTime=$(date +%s.%N) # Start timestamp
-
     whisper --language ${LANGUAGE} --model medium --output_dir "${OUTPUT_DIR}" "${mediaFile}"
+    endTime=$(date +%s.%N) # End timestamp
 
     # Calculate elapsed time in seconds
     elapsedSeconds=$(echo "$endTime - $startTime" | bc)
