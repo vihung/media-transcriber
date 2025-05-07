@@ -5,6 +5,8 @@ INPUT_DIR=/root/media/inbox
 OUTPUT_DIR=/root/media/outbox
 WORK_DIR=/root/media/in-progress
 
+PERFORMANCE_LOG=${OUTPUT_DIR}/performance.csv
+
 # Function to round the given number
 round() {
     printf "%.0f\n" ${1}
@@ -26,6 +28,10 @@ echo "Number of Files to Process: ${numFiles}"
 if [ ${numFiles} -eq 0 ]; then
     echo "No files to process"
     exit 
+fi
+
+if [[ ! -f "${PERFORMANCE_LOG}" ]]; then
+    echo "Media File, Duration, Elapsed Seconds, Efficiency Factor" >> "${PERFORMANCE_LOG}"
 fi
 
 # Iterate through all media files in ${INPUT_DIR}
@@ -67,6 +73,9 @@ for sourceMediaFile in "${INPUT_DIR}"/*; do
     echo "# Efficiency Factor: ${efficiencyFactor}"
     echo "########################################"
     echo
+
+    # Log stats to performance log
+    echo "'${sourceMediaFile}', ${duration}, ${elapsedSeconds}, ${efficiencyFactor}" >> "${PERFORMANCE_LOG}"
 
     # Delete the txt, tsv, and vtt, files in ${OUTPUT_DIR}
     rm -v "${OUTPUT_DIR}"/*.{txt,vtt,tsv}
