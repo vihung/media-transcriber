@@ -39,6 +39,7 @@ for sourceMediaFile in "${INPUT_DIR}"/*; do
     echo
     echo "########################################"
     echo "# Processing ${mediaFilename}"
+    echo "#"
     echo "# Duration: $(format-time ${duration})"
     echo "########################################"
     echo
@@ -48,10 +49,8 @@ for sourceMediaFile in "${INPUT_DIR}"/*; do
 
     # Run Whisper on the file ${mediaFile}
     startTime=$(date +%s.%N) # Start timestamp
-    echo "Start Time: ${startTime}: $(date -d @${startTime%.*} "+%Y-%m-%d %H:%M:%S")"
+
     whisper --language ${LANGUAGE} --model medium --output_dir "${OUTPUT_DIR}" "${mediaFile}"
-    endTime=$(date +%s.%N) # End timestamp
-    echo "End Time: ${endTime}: $(date -d @${endTime%.*} "+%Y-%m-%d %H:%M:%S")"
 
     # Calculate elapsed time in seconds
     elapsedSeconds=$(echo "$endTime - $startTime" | bc)
@@ -61,10 +60,10 @@ for sourceMediaFile in "${INPUT_DIR}"/*; do
     echo
     echo "########################################"
     echo "# Finished processing ${mediaFilename}"
-    echo "# Duration (s): ${duration}"
-    echo "# Start Time: ${startTime}: $(date -d @${startTime%.*} "+%Y-%m-%d %H:%M:%S")"
-    echo "# End Time: ${endTime}: $(date -d @${endTime%.*} "+%Y-%m-%d %H:%M:%S")"
-    echo "# Elapsed Time: ${elapsedSeconds}: $(format-time ${elapsedSeconds})" # Format seconds as hours, minutes, and seconds
+    echo "#"
+    echo "# Duration : $(format-time ${duration})"
+    echo "# Elapsed  : $(format-time ${elapsedSeconds})" 
+    echo "#"
     echo "# Efficiency Factor: ${efficiencyFactor}"
     echo "########################################"
     echo
