@@ -31,7 +31,7 @@ if [ ${numFiles} -eq 0 ]; then
 fi
 
 if [[ ! -f "${PERFORMANCE_LOG}" ]]; then
-    echo "Media File, Duration, Elapsed Seconds, Efficiency Factor" >> "${PERFORMANCE_LOG}"
+    echo "Start, End, Duration, Elapsed Seconds, Efficiency Factor" >> "${PERFORMANCE_LOG}"
 fi
 
 # Iterate through all media files in ${INPUT_DIR}
@@ -75,7 +75,7 @@ for sourceMediaFile in "${INPUT_DIR}"/*; do
     echo
 
     # Log stats to performance log
-    echo "'${sourceMediaFile}', ${duration}, ${elapsedSeconds}, ${efficiencyFactor}" >> "${PERFORMANCE_LOG}"
+    echo "${startTime}, ${endTime}, ${duration}, ${elapsedSeconds}, ${efficiencyFactor}" >> "${PERFORMANCE_LOG}"
 
     # Delete the txt, tsv, and vtt, files in ${OUTPUT_DIR}
     rm -v "${OUTPUT_DIR}"/*.{txt,vtt,tsv}
